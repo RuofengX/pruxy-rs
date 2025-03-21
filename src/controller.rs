@@ -30,8 +30,6 @@ pub struct Proxy {
     listerner: StreamGroup<TcpListenerStream>,
     /// 上游
     addr: String,
-    /// 上游
-    port: u16,
 }
 
 pub static PROXY_COUNT: AtomicU16 = AtomicU16::new(0);
@@ -69,8 +67,8 @@ impl Proxy {
                             // 上游连接失败
                             Err(e) => {
                                 error!(
-                                    "proxy_{} | connect upstream {}:{} fail, {}, ignore",
-                                    self.proxy_id, self.addr, self.port, e
+                                    "proxy_{} | connect upstream {} fail, {}, ignore",
+                                    self.proxy_id, self.addr, e
                                 )
                             }
                         }

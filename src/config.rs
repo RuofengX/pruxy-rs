@@ -115,16 +115,16 @@ impl ProxyBuilder {
                     }
                 }
 
-                if listerner.len() == 0{
-                    bail!("all address bind fail");
-                }
-
                 let (proxy_id, proxy) = Proxy::new(listerner, upstream_addr.clone(), port);
                 warn!("proxy_{} created, listening at {}:{}", proxy_id, addr, port);
                 ret.push(proxy);
             }
         }
+        if ret.len() == 0 {
+            bail!("all address bind fail");
+        }
         let ret = Controller::new(ret);
+
         Ok(ret)
     }
 }
