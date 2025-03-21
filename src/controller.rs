@@ -35,7 +35,7 @@ pub struct Proxy {
 pub static PROXY_COUNT: AtomicU16 = AtomicU16::new(0);
 
 impl Proxy {
-    pub fn new(listerner: StreamGroup<TcpListenerStream>, addr: String, port: u16) -> (u16, Self) {
+    pub fn new(listerner: StreamGroup<TcpListenerStream>, addr: String) -> (u16, Self) {
         let proxy_id = PROXY_COUNT.fetch_add(1, Ordering::AcqRel);
         (
             proxy_id,
@@ -43,7 +43,6 @@ impl Proxy {
                 proxy_id,
                 listerner,
                 addr,
-                port,
             },
         )
     }

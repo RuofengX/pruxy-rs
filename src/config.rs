@@ -115,7 +115,7 @@ impl ProxyBuilder {
                     }
                 }
 
-                let (proxy_id, proxy) = Proxy::new(listerner, upstream_addr.clone(), port);
+                let (proxy_id, proxy) = Proxy::new(listerner, upstream_addr.clone());
                 warn!("proxy_{} created, listening at {}:{}", proxy_id, addr, port);
                 ret.push(proxy);
             }
