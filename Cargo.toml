@@ -6,6 +6,7 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0.97"
 byte-unit = "5.1.6"
+futures-concurrency = "7.6.3"
 log = "0.4.26"
 simple_logger = "5.0.0"
 tokio = { version = "1.44.1", features = ["io-util", "macros", "net", "rt", "rt-multi-thread"] }
